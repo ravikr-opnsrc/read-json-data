@@ -5,7 +5,7 @@ use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize)]
 struct Article {
-    article: String,
+    article_title: String,
     author: String,
     paragraph: Vec<Paragraph>,
 }
@@ -18,7 +18,7 @@ struct Paragraph {
 fn main() {
     let json_str = r#"
     {
-        "article": "How to work with JSON in Rust",
+        "article_title": "How to work with JSON in Rust",
         "author": "Mr. Anonymous",
         "paragraph": [
             {
@@ -37,7 +37,7 @@ fn main() {
     // Deserialize JSON into a Rust data structure
     let article: Article = serde_json::from_str(json_str).unwrap();
 
-    println!("Article: {}", article.article);
+    println!("Article: {}", article.article_title);
     println!("Author: {}", article.author);
 
     for paragraph in article.paragraph {
@@ -46,7 +46,7 @@ fn main() {
 
 
     let article2 = Article {
-        article: "How to work with JSON in Rust".to_string(),
+        article_title: "How to work with JSON in Rust".to_string(),
         author: "Ravikant Kumar".to_string(),
         paragraph: vec![
             Paragraph { name: "starting sentence".to_string() },
