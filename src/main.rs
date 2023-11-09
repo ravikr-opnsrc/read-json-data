@@ -19,7 +19,7 @@ fn main() {
     let json_str = r#"
     {
         "article": "How to work with JSON in Rust",
-        "author": "Mr. Anonymous ",
+        "author": "Mr. Anonymous",
         "paragraph": [
             {
                 "name": "starting sentence"
@@ -43,4 +43,19 @@ fn main() {
     for paragraph in article.paragraph {
         println!("Paragraph: {}", paragraph.name);
     }
+
+
+    let article2 = Article {
+        article: "How to work with JSON in Rust".to_string(),
+        author: "Ravikant Kumar".to_string(),
+        paragraph: vec![
+            Paragraph { name: "starting sentence".to_string() },
+            Paragraph { name: "body of paragraph".to_string() },
+            Paragraph { name: "end of the paragraph".to_string() },
+        ],
+    };
+
+    let json_str = serde_json::to_string(&article2).unwrap();
+
+    println!("\n\n{}", json_str);
 }
